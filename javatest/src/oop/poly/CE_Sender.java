@@ -1,0 +1,16 @@
+package oop.poly;
+
+public abstract class CE_Sender {
+	String name;
+	CE_Sender(String name){
+		this.name = name;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public abstract void send();
+}
+

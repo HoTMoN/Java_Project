@@ -1,0 +1,7 @@
+1.  DOMParser
+	org.w3c.dom라이브러리
+	- DocumentBuilderFactory
+	  : DocumentBuilder를 생성해주는 객체
+	- DocumentBuilder - parser
+	  : xml형식의 문서를 자바객체로 변환하는 역할의 객체
+	  
