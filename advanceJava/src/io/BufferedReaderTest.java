@@ -7,7 +7,6 @@ import java.io.IOException;
 
 public class BufferedReaderTest {
 	public static void main(String[] args) {
-		FileReader fr = null;
 		BufferedReader br = null; //기본 읽기 기능+성능
 		try {
 //			fr = new FileReader("src/data/input.txt");
@@ -34,7 +33,7 @@ public class BufferedReaderTest {
 		}finally {
 			//3. 파일닫기
 			try {
-				if(fr!=null) fr.close();
+				if(br!=null) br.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
