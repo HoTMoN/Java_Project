@@ -1,4 +1,4 @@
-package mapreduce.air.sort;
+package mapred.exam.test;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -15,24 +15,24 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
 //맵리듀스를 실행하기 위한 클래스
-public class AirSortDriver extends Configured implements Tool {
+public class TestDriver extends Configured implements Tool {
 
 	@Override
 	public int run(String[] optionlist) throws Exception {
 		GenericOptionsParser optionParser = new GenericOptionsParser(getConf(), optionlist);
 
 		String[] otherArgs = optionParser.getRemainingArgs();
-		Job job = new Job(getConf(), "air_sort");
+		Job job = new Job(getConf(), "test");
 
-		job.setMapperClass(AirSortMapper.class);
-		job.setReducerClass(AirSortReducer.class);
-		job.setJarByClass(AirSortDriver.class);
+		job.setMapperClass(TestMapper.class);
+		job.setReducerClass(TestReducer.class);
+		job.setJarByClass(TestDriver.class);
 
 		// shuffle할 때 사용할 클래스를 사용자정의 클래스가 실행되도록 등록하기
-		job.setPartitionerClass(AirSortPartitioner.class);
+		job.setPartitionerClass(TestPartitioner.class);
 		job.setGroupingComparatorClass(GroupKeyComparator.class);
-		job.setSortComparatorClass(CustomKeyComparator.class);
-		job.setMapOutputKeyClass(CustomKey.class);
+		job.setSortComparatorClass(MyKeyComparator.class);
+		job.setMapOutputKeyClass(MyKey.class);
 		job.setMapOutputValueClass(IntWritable.class);
 		
 		job.setInputFormatClass(TextInputFormat.class);
@@ -50,7 +50,7 @@ public class AirSortDriver extends Configured implements Tool {
 	}
 
 	public static void main(String[] args) throws Exception {
-		ToolRunner.run(new Configuration(), new AirSortDriver(), args);
+		ToolRunner.run(new Configuration(), new TestDriver(), args);
 	}
 
 }
